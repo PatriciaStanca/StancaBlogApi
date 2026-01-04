@@ -1,0 +1,6 @@
+@StancaBlogApi_HostAddress = http://localhost:5271
+
+GET {{StancaBlogApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

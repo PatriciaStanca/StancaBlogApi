@@ -1,0 +1,18 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost,1433;Database=StancaBlogDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"
+  },
+  "Jwt": {
+    "Key": "REPLACE_WITH_SECURE_KEY",
+    "Issuer": "StancaBlogApi",
+    "Audience": "StancaBlogApiUsers",
+    "ExpiresMinutes": 60
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
