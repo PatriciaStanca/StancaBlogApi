@@ -19,14 +19,14 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Comment → User (NO cascade to avoid multiple cascade paths)
+        // Comment - User (NO cascade to avoid multiple cascade paths)
         modelBuilder.Entity<Comment>()
             .HasOne(c => c.User)
             .WithMany(u => u.Comments)
             .HasForeignKey(c => c.UserId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Comment → BlogPost (cascade is OK here)
+        // Comment - BlogPost (cascade is OK here)
         modelBuilder.Entity<Comment>()
             .HasOne(c => c.BlogPost)
             .WithMany(b => b.Comments)

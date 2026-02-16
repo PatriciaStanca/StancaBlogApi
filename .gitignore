@@ -23,3 +23,6 @@ Thumbs.db
 appsettings.json
 appsettings.Development.json
 *.db
+
+# Local course/reference files
+PDF/

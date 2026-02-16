@@ -1,24 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StancaBlogApi.Data;
-using StancaBlogApi.Models;
+using StancaBlogApi.Core.Interfaces;
 
 namespace StancaBlogApi.Controllers;
 
-[ApiController]
 [Route("api/[controller]")]
-public class CategoriesController : ControllerBase
+public class CategoriesController : ApiControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly ICategoryService _categoryService;
 
-    public CategoriesController(AppDbContext context)
+    public CategoriesController(ICategoryService categoryService)
     {
-        _context = context;
+        _categoryService = categoryService;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Category>>> GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        return await _context.Categories.ToListAsync();
+        var result = await _categoryService.GetAllAsync();
+        return ToActionResult(result);
     }
 }

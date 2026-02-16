@@ -3,7 +3,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using StancaBlogApi.Core.Interfaces;
+using StancaBlogApi.Core.Services;
 using StancaBlogApi.Data;
+using StancaBlogApi.Data.Interfaces;
+using StancaBlogApi.Data.Repos;
+using StancaBlogApi.Infrastructure.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +19,21 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Controllers
 builder.Services.AddControllers();
+
+// Repositories
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+// Services
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IBlogPostService, BlogPostService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+// Infrastructure
+builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
 // Swagger + JWT
 builder.Services.AddEndpointsApiExplorer();
