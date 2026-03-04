@@ -101,15 +101,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     if (trimmed.StartsWith(bearerPrefix, StringComparison.OrdinalIgnoreCase))
                     {
                         ctx.Token = trimmed.Substring(bearerPrefix.Length).Trim();
-                        Console.WriteLine($"JWT token (len {ctx.Token.Length}) extracted from header.");
                     }
                 }
                 return Task.CompletedTask;
             },
             OnAuthenticationFailed = ctx =>
             {
-                var authHeader = ctx.Request.Headers.Authorization.ToString();
-                Console.WriteLine($"JWT auth failed: {ctx.Exception.Message}. Header: {authHeader}");
+                Console.WriteLine($"JWT auth failed: {ctx.Exception.Message}");
                 return Task.CompletedTask;
             }
         };

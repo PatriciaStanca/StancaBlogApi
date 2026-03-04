@@ -11,6 +11,7 @@ obj/
 # IDE / tooling
 .vs/
 .vscode/
+.idea/
 
 # OS artifacts
 .DS_Store
@@ -22,7 +23,14 @@ Thumbs.db
 # Secrets / local config
 appsettings.json
 appsettings.Development.json
+secrets.json
+.env
+.env.*
 *.db
 
 # Local course/reference files
 PDF/
+
+# Publish artifacts
+publish/
+artifacts/

@@ -19,6 +19,14 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
+
+        modelBuilder.Entity<User>()
+            .HasIndex(u => u.UserName)
+            .IsUnique();
+
         // Comment - User (NO cascade to avoid multiple cascade paths)
         modelBuilder.Entity<Comment>()
             .HasOne(c => c.User)

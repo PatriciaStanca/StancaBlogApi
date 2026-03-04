@@ -1,9 +1,9 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost,1433;Database=StancaBlogDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=localhost,1433;Database=StancaBlogDb;User Id=sa;Password=REPLACE_SQL_PASSWORD;TrustServerCertificate=True;"
   },
   "Jwt": {
-    "Key": "REPLACE_WITH_SECURE_KEY",
+    "Key": "REPLACE_WITH_SECURE_KEY_MIN_32_CHARS",
     "Issuer": "StancaBlogApi",
     "Audience": "StancaBlogApiUsers",
     "ExpiresMinutes": 60
