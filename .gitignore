@@ -12,6 +12,7 @@ obj/
 .vs/
 .vscode/
 .idea/
+.config/
 
 # OS artifacts
 .DS_Store
@@ -32,6 +33,8 @@ secrets.json
 PDF/
 project_dump.txt
 *.postman_collection.json
+workspace.dsl
+*.http
 
 # Publish artifacts
 publish/
