@@ -1,4 +1,3 @@
-using StancaBlogApi.Models;
 
 namespace StancaBlogApi.Data.Interfaces;
 

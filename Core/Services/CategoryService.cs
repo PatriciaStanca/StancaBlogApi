@@ -1,22 +1,19 @@
-using StancaBlogApi.Core.Common;
-using StancaBlogApi.Core.Interfaces;
-using StancaBlogApi.Data.Interfaces;
-using StancaBlogApi.Models;
-
 namespace StancaBlogApi.Core.Services;
 
 public class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _categoryRepository;
+    private readonly IMapper _mapper;
 
-    public CategoryService(ICategoryRepository categoryRepository)
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
+        _mapper = mapper;
     }
 
-    public async Task<ServiceResult<List<Category>>> GetAllAsync()
+    public async Task<ServiceResult<List<CategoryDto>>> GetAllAsync()
     {
         var categories = await _categoryRepository.GetAllAsync();
-        return ServiceResult<List<Category>>.Ok(categories);
+        return ServiceResult<List<CategoryDto>>.Ok(_mapper.Map<List<CategoryDto>>(categories));
     }
 }

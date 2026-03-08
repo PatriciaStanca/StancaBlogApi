@@ -1,0 +1,16 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading.Tasks;
+global using System.ComponentModel.DataAnnotations;
+global using AutoMapper;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using StancaBlogApi.Core.Common;
+global using StancaBlogApi.Core.Interfaces;
+global using StancaBlogApi.Data.DTO;
+global using StancaBlogApi.Data.Entities;
+global using StancaBlogApi.Data.Interfaces;
+global using StancaBlogApi.Persistence;

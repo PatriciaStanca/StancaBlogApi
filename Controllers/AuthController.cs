@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using StancaBlogApi.Core.Interfaces;
-using StancaBlogApi.DTOs;
 using StancaBlogApi.Infrastructure.Security;
 
 namespace StancaBlogApi.Controllers;
@@ -9,24 +5,24 @@ namespace StancaBlogApi.Controllers;
 [Route("api/[controller]")]
 public class AuthController : ApiControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly IUserService _userService;
 
-    public AuthController(IAuthService authService)
+    public AuthController(IUserService userService)
     {
-        _authService = authService;
+        _userService = userService;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDto dto)
     {
-        var result = await _authService.RegisterAsync(dto);
+        var result = await _userService.RegisterAsync(dto);
         return ToActionResult(result);
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginDto dto)
     {
-        var result = await _authService.LoginAsync(dto);
+        var result = await _userService.LoginAsync(dto);
         return ToActionResult(result);
     }
 
@@ -37,7 +33,7 @@ public class AuthController : ApiControllerBase
         if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
-        var result = await _authService.UpdateMeAsync(userId, dto);
+        var result = await _userService.UpdateMeAsync(userId, dto);
         return ToActionResult(result);
     }
 
@@ -48,7 +44,7 @@ public class AuthController : ApiControllerBase
         if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
-        var result = await _authService.ChangePasswordAsync(userId, dto);
+        var result = await _userService.ChangePasswordAsync(userId, dto);
         return ToActionResult(result);
     }
 
@@ -59,7 +55,7 @@ public class AuthController : ApiControllerBase
         if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
-        var result = await _authService.DeleteMeAsync(userId);
+        var result = await _userService.DeleteMeAsync(userId);
         return ToActionResult(result);
     }
 }

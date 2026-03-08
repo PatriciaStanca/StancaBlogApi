@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using StancaBlogApi.Core.Interfaces;
-using StancaBlogApi.DTOs;
 using StancaBlogApi.Infrastructure.Security;
 
 namespace StancaBlogApi.Controllers;
@@ -9,9 +5,9 @@ namespace StancaBlogApi.Controllers;
 [Route("api/[controller]")]
 public class BlogPostsController : ApiControllerBase
 {
-    private readonly IBlogPostService _blogPostService;
+    private readonly IBlogService _blogPostService;
 
-    public BlogPostsController(IBlogPostService blogPostService)
+    public BlogPostsController(IBlogService blogPostService)
     {
         _blogPostService = blogPostService;
     }

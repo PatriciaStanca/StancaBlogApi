@@ -1,4 +1,4 @@
-namespace StancaBlogApi.Models;
+namespace StancaBlogApi.Data.Entities;
 
 public class Category
 {

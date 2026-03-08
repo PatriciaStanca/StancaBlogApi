@@ -30,6 +30,8 @@ secrets.json
 
 # Local course/reference files
 PDF/
+project_dump.txt
+*.postman_collection.json
 
 # Publish artifacts
 publish/

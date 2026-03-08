@@ -61,6 +61,3 @@ dotnet build
 dotnet run
 ```
 3. Open Swagger: `https://localhost:<port>/swagger`
-
-## Postman
-- Collection file: `StancaBlogApi.postman_collection.json`

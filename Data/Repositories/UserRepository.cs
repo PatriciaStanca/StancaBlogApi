@@ -1,0 +1,29 @@
+
+namespace StancaBlogApi.Data.Repositories;
+
+public class UserRepository : IUserRepository
+{
+    private readonly BlogDbContext _context;
+
+    public UserRepository(BlogDbContext context)
+    {
+        _context = context;
+    }
+
+    public Task<User?> GetByIdAsync(int id) => _context.Users.FindAsync(id).AsTask();
+
+    public Task<User?> GetByUserNameAsync(string userName) =>
+        _context.Users.FirstOrDefaultAsync(u => u.UserName == userName);
+
+    public Task<bool> EmailExistsAsync(string email, int? excludeUserId = null) =>
+        _context.Users.AnyAsync(u => u.Email == email && (!excludeUserId.HasValue || u.Id != excludeUserId.Value));
+
+    public Task<bool> UserNameExistsAsync(string userName, int? excludeUserId = null) =>
+        _context.Users.AnyAsync(u => u.UserName == userName && (!excludeUserId.HasValue || u.Id != excludeUserId.Value));
+
+    public Task AddAsync(User user) => _context.Users.AddAsync(user).AsTask();
+
+    public void Remove(User user) => _context.Users.Remove(user);
+
+    public Task SaveChangesAsync() => _context.SaveChangesAsync();
+}

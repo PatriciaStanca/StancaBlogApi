@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using StancaBlogApi.Core.Common;
 
 namespace StancaBlogApi.Controllers;
 

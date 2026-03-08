@@ -1,12 +1,8 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using StancaBlogApi.Core.Interfaces;
-using StancaBlogApi.DTOs;
 using StancaBlogApi.Infrastructure.Security;
 
 namespace StancaBlogApi.Controllers;
 
-[Route("api/comments")]
+[Route("api")]
 public class CommentsController : ApiControllerBase
 {
     private readonly ICommentService _commentService;
@@ -16,7 +12,7 @@ public class CommentsController : ApiControllerBase
         _commentService = commentService;
     }
 
-    [HttpGet("/api/blogposts/{postId}/comments")]
+    [HttpGet("blogposts/{postId}/comments")]
     public async Task<IActionResult> GetByPost(int postId)
     {
         var result = await _commentService.GetByPostAsync(postId);
@@ -24,7 +20,7 @@ public class CommentsController : ApiControllerBase
     }
 
     [Authorize]
-    [HttpPost("/api/blogposts/{postId}/comments")]
+    [HttpPost("blogposts/{postId}/comments")]
     public async Task<IActionResult> Create(int postId, CommentCreateDto dto)
     {
         if (!User.TryGetUserId(out var userId))
@@ -39,7 +35,7 @@ public class CommentsController : ApiControllerBase
     }
 
     [Authorize]
-    [HttpPut("{id}")]
+    [HttpPut("comments/{id}")]
     public async Task<IActionResult> Update(int id, CommentUpdateDto dto)
     {
         if (!User.TryGetUserId(out var userId))
@@ -50,7 +46,7 @@ public class CommentsController : ApiControllerBase
     }
 
     [Authorize]
-    [HttpDelete("{id}")]
+    [HttpDelete("comments/{id}")]
     public async Task<IActionResult> Delete(int id)
     {
         if (!User.TryGetUserId(out var userId))

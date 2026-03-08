@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using StancaBlogApi.Core.Interfaces;
-
 namespace StancaBlogApi.Controllers;
 
 [Route("api/[controller]")]

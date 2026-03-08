@@ -1,6 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 
-namespace StancaBlogApi.Models;
+namespace StancaBlogApi.Data.Entities;
 
 public class User
 {
